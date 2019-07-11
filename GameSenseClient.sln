@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameSenseClient", "GameSenseClient\GameSenseClient.csproj", "{2C4AF1A7-A482-4947-A99C-94CB90E26767}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameSenseClientTest", "GameSenseClientTest\GameSenseClientTest.csproj", "{1292E59C-8677-4116-A849-016644C025CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C4AF1A7-A482-4947-A99C-94CB90E26767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C4AF1A7-A482-4947-A99C-94CB90E26767}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C4AF1A7-A482-4947-A99C-94CB90E26767}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C4AF1A7-A482-4947-A99C-94CB90E26767}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1292E59C-8677-4116-A849-016644C025CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1292E59C-8677-4116-A849-016644C025CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1292E59C-8677-4116-A849-016644C025CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1292E59C-8677-4116-A849-016644C025CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D4CD94C-E5FF-437A-A75C-E1E5A701F444}
+	EndGlobalSection
+EndGlobal

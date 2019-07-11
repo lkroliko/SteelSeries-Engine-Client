@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2C4AF1A7-A482-4947-A99C-94CB90E26767}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GameSenseClient</RootNamespace>
+    <AssemblyName>GameSenseClient</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enums\GSDeviceZone.cs" />
+    <Compile Include="GSClient.cs" />
+    <Compile Include="GSColors\GSColor.cs" />
+    <Compile Include="GSColors\GSGradientColor.cs" />
+    <Compile Include="GSColors\GSRangeColor.cs" />
+    <Compile Include="GSColors\GSStaticColor.cs" />
+    <Compile Include="GSCommands\GSCommand.cs" />
+    <Compile Include="GSCommands\GSCommandBindEvent.cs" />
+    <Compile Include="Enums\GSCommandBindEventMode.cs" />
+    <Compile Include="GSCommands\GSCommandCreator.cs" />
+    <Compile Include="GSCommands\GSCommandEvent.cs" />
+    <Compile Include="GSCommands\GSCommandRegisterEvent.cs" />
+    <Compile Include="GSCommands\GSCommandRegisterProgram.cs" />
+    <Compile Include="Enums\GSCommandType.cs" />
+    <Compile Include="GSCommands\GSCommandUnregisterEvent.cs" />
+    <Compile Include="GSCommands\GSCommandUnregisterProgram.cs" />
+    <Compile Include="GSConfig.cs" />
+    <Compile Include="GSConnector.cs" />
+    <Compile Include="GSEventData.cs" />
+    <Compile Include="GSHandlers\GSHandler.cs" />
+    <Compile Include="JsonConverters\GSHandlerJsonConverter.cs" />
+    <Compile Include="JsonConverters\GSGradientColorJsonConverter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
