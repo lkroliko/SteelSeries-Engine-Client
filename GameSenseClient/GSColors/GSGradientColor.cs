@@ -11,25 +11,12 @@ namespace GameSenseClient
     [JsonConverter(typeof(GSGradientColorJsonConverter))]
     public class GSGradientColor : GSColor
     {
-        //"color": {
-        // "gradient": {
-        //    "zero": {
-        //      "red": 255,
-        //      "green": 0,
-        //      "blue": 0
-        //    },
-        //    "hundred": {
-        //      "red": 0,
-        //      "green": 255,
-        //      "blue": 0
-        //    }
-        //  }
-        //}
         /// <summary>
         /// Color when event value is "0"
         /// </summary>
         [JsonProperty(PropertyName = "zero")]
         public GSColor From { get; set; }
+
         /// <summary>
         /// Color when event value is "100"
         /// </summary>

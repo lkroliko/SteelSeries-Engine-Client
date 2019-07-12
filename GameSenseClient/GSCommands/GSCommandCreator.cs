@@ -8,7 +8,7 @@ namespace GameSenseClient
 {
     public class GSCommandCreator
     {
-        private string programName;
+        private readonly string programName;
         internal GSCommandCreator(string programName) => this.programName = programName;
 
         public GSCommandEvent CreateGSCommandEvent()

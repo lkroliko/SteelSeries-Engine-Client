@@ -62,8 +62,6 @@ namespace GameSenseClient
         Mouse_Logo,
         Mouse_Base,
 
-        Headset_Earcups
-
-               
+        Headset_Earcups     
     }
 }

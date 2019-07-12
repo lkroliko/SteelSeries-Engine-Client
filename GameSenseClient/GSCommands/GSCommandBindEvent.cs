@@ -11,15 +11,6 @@ namespace GameSenseClient
 {
     public class GSCommandBindEvent : GSCommand
     {
-        //{
-        //  "game": "ADVENTURE",
-        //  "event": "HEALTH",
-        //  "min_value": 0,
-        //  "max_value": 100,
-        //  "icon_id": 1,
-        //  "handlers": [
-        //  ]
-        //}
         [JsonProperty(PropertyName = "game")]
         private string ProgramName { get; set; }
         [JsonProperty(PropertyName = "event")]
@@ -28,6 +19,7 @@ namespace GameSenseClient
         public int MinimumValue { get; set; } = 0;
         [JsonProperty(PropertyName = "max_value")]
         public int MaximumValue { get; set; } = 100;
+
         /// <summary>
         /// "0" means no icon
         /// </summary>

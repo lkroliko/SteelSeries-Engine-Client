@@ -10,20 +10,19 @@ namespace GameSenseClient
 {
     public class GSConfig
     {
-        private string configFilePath { get { return GetConfigFilePath(); } }
-
+        private string ConfigFilePath { get { return GetConfigFilePath(); } }
         public string Address { get; private set; }
         public int Port { get; private set; }
         public string EncryptedAddress { get; private set; }
         public int EncryptedPort { get; private set; }
-
         public Uri EventUri { get; private set; }
         public Uri RegisterProgramUri { get; private set; }
         public Uri BindEventUri { get; private set; }
         public Uri RegisterEventUri { get; private set; }
         public Uri UnregisterEventUri { get; private set; }
         public Uri UnregisterProgramUri { get; private set; }
-        public GSConfig(bool useEncryption)
+
+        internal GSConfig(bool useEncryption)
         {
             string configContent = ReadConfigFile();
             ParseConfig(configContent);
@@ -32,18 +31,16 @@ namespace GameSenseClient
 
         private string ReadConfigFile()
         {
-            if (!File.Exists(configFilePath))
-                throw new FileNotFoundException($"SteelSeries Engine 3 is not running. File not found {configFilePath}");
+            if (!File.Exists(ConfigFilePath))
+                throw new FileNotFoundException($"SteelSeries Engine 3 is not running. File not found {ConfigFilePath}");
 
-            return File.ReadAllText(configFilePath);
+            return File.ReadAllText(ConfigFilePath);
         }
-
         private string GetConfigFilePath()
         {
             string programdataPath = Environment.ExpandEnvironmentVariables("%PROGRAMDATA%");
             return $"{programdataPath}/SteelSeries/SteelSeries Engine 3/coreProps.json";
         }
-
         private void ParseConfig(string configContent)
         {
             dynamic config = JsonConvert.DeserializeObject(configContent);
@@ -55,7 +52,6 @@ namespace GameSenseClient
             EncryptedAddress = tmpEncryptedAddress[0];
             EncryptedPort = int.Parse(tmpEncryptedAddress[1]);
         }
-
         private void CreateUris(bool UseEncryptedAddress)
         {
             string tmpAddress;
@@ -69,7 +65,7 @@ namespace GameSenseClient
             BindEventUri = new Uri($"http://{tmpAddress}/bind_game_event");
             RegisterEventUri = new Uri($"http://{tmpAddress}/register_game_event");
             UnregisterEventUri = new Uri($"http://{tmpAddress}/remove_game_event");
-            UnregisterProgramUri = new Uri($"http://{tmpAddress}/remove_game");         
+            UnregisterProgramUri = new Uri($"http://{tmpAddress}/remove_game");
         }
     }
 }

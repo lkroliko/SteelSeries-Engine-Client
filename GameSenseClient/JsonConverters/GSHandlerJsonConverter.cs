@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameSenseClient.JsonConverters
 {
@@ -13,17 +9,8 @@ namespace GameSenseClient.JsonConverters
         {
             throw new NotImplementedException();
         }
-
         public override void WriteJson(JsonWriter writer, GSHandler value, JsonSerializer serializer)
         {
-            //  {
-            //      "device-type": "keyboard",
-            //      "zone": "function-keys",
-            //      "color": {"gradient": {"zero": {"red": 255, "green": 0, "blue": 0},
-            //                             "hundred": {"red": 0, "green": 255, "blue": 0}}},
-            //      "mode": "percent"
-            //    }
-
             writer.WriteStartObject();
             writer.WritePropertyName("device-type", false);
             serializer.Serialize(writer, value.device);
@@ -36,7 +23,7 @@ namespace GameSenseClient.JsonConverters
             else
             {
                 writer.WriteStartArray();
-                foreach(GSColor color in value.Colors)
+                foreach (GSColor color in value.Colors)
                     serializer.Serialize(writer, color);
                 writer.WriteEndArray();
             }

@@ -10,8 +10,8 @@ namespace GameSenseClient
 {
     public class GSConnector
     {
-        private GSConfig gSConfig;
-        private HttpClient httpClient = new HttpClient();
+        private readonly GSConfig gSConfig;
+        private readonly HttpClient httpClient = new HttpClient();
         public string LastResult { get; private set; }
         internal GSConnector(bool useEncryption)
         {
@@ -32,12 +32,10 @@ namespace GameSenseClient
 
             return false;
         }
-
         private StringContent GetCommandContent(GSCommand gSCommand)
         { 
             return new StringContent(gSCommand.GetCommand(), Encoding.UTF8, "application/json");
         }
-
         private Uri GetCommandUri(GSCommand gSCommand)
         {
             switch ((GSCommandType)gSCommand)

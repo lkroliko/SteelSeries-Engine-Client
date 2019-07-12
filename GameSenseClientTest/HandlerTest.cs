@@ -1,31 +1,26 @@
 ﻿using GameSenseClient;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace UnitTest
 {
     [TestClass]
     public class HandlerTest
     {
-        string programName = "HANDLERTEST";
-        GSEventMode mode = GSEventMode.Percent;
-        GSDeviceZone zone = GSDeviceZone.RgbZonedDevice_Twenty;
-        int sleep = 50;
+        readonly string programName = "HANDLERTEST";
+        readonly GSEventMode mode = GSEventMode.Percent;
+        readonly GSDeviceZone zone = GSDeviceZone.RgbZonedDevice_Twenty;
+        readonly int sleep = 50;
 
-        GSStaticColor red = new GSStaticColor() { R = 255 };
-        GSStaticColor blue = new GSStaticColor() { B = 255 };
-        GSStaticColor green = new GSStaticColor() { G = 255 };
-        GSGradientColor redBlue;
-        GSGradientColor blueGreen;
-        GSCommandBindEvent gSCommandBindEvent;
-        GSCommandEvent gSCommandEvent;
-        GSClient gSClient;
-        GSHandler gSHandler;
+        readonly GSStaticColor red = new GSStaticColor() { R = 255 };
+        readonly GSStaticColor blue = new GSStaticColor() { B = 255 };
+        readonly GSStaticColor green = new GSStaticColor() { G = 255 };
+        readonly GSGradientColor redBlue;
+        readonly GSGradientColor blueGreen;
+        readonly GSCommandBindEvent gSCommandBindEvent;
+        readonly GSCommandEvent gSCommandEvent;
+        readonly GSClient gSClient;
+        readonly GSHandler gSHandler;
 
         public HandlerTest()
         {

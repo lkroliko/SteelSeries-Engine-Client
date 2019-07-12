@@ -13,7 +13,6 @@ namespace GameSenseClient.JsonConverters
         {
             throw new NotImplementedException();
         }
-
         public override void WriteJson(JsonWriter writer, GSGradientColor value, JsonSerializer serializer)
         {
             writer.WriteStartObject();

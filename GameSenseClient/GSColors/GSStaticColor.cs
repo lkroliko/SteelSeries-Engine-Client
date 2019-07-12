@@ -10,11 +10,6 @@ namespace GameSenseClient
 {
     public class GSStaticColor : GSColor
     {
-        //   "color": {
-        //  "red": 255,
-        //  "green": 0,
-        //  "blue": 255
-        //}
         [JsonProperty(PropertyName = "red")]
         public int R { get; set; }
         [JsonProperty(PropertyName = "green")]

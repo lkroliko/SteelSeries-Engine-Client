@@ -24,13 +24,11 @@ namespace GameSenseClient
             gSCommandRegisterProgram.DeveloperName = developerName;
             return GSConnector.SendCommand(gSCommandRegisterProgram);
         }
-
         public bool UnregisterProgram()
         {
             GSCommandUnregisterProgram gSCommandUnregisterProgram = GSCommandCreator.CreateGSCommandUnregisterProgram();
             return GSConnector.SendCommand(gSCommandUnregisterProgram);
         }
-
         public bool UnregisterEvent(string name)
         {
             GSCommandUnregisterEvent gSCommandUnregisterEvent = GSCommandCreator.CreateGSCommandUnregisterEvent();

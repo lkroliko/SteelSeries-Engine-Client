@@ -12,27 +12,10 @@ namespace GameSenseClient
     [JsonConverter(typeof(GSHandlerJsonConverter))]
     public class GSHandler
     {
-
-        //  {
-        //      "device-type": "keyboard",
-        //      "zone": "function-keys",
-        //      "color": {"gradient": {"zero": {"red": 255, "green": 0, "blue": 0},
-        //                             "hundred": {"red": 0, "green": 255, "blue": 0}}},
-        //      "mode": "percent"
-        //    }
-
-        //`device-type`: <device type>                     mandatory
-        //`zone`: <fixed zone value> mandatory for either the `zone` or `custom - zone - keys` to be specified
-        //`custom - zone - keys`: < dynamic - zone - definition > mandatory for either the `zone` or `custom - zone - keys` to be specified
-        //`mode`: `count` | `percent` | `color` | `bitmap` mandatory
-        //`color`: <static-color-definition> | <gradient-color-definition> | <range-color-definition> mandatory except when using `bitmap` mode
-        //`rate`: <rate-definition>                        optional
         [JsonProperty(PropertyName = "device-type")]
         internal string device;
         [JsonProperty]
         internal string zone;
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        private string custom;
         [JsonProperty]
         internal string mode;
         
