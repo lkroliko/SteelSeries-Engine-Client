@@ -1,3 +1,3 @@
 # Game Sense Client
 
-SteelSeries GameSense client in C#;
+SteelSeries GameSense client in C#
