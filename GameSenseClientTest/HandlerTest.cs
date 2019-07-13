@@ -48,8 +48,6 @@ namespace UnitTest
 
             gSCommandBindEvent.Name = eventName;
 
-            string tmp = gSCommandBindEvent.GetCommand();
-
             Assert.IsTrue(gSClient.GSConnector.SendCommand(gSCommandBindEvent));
 
             gSCommandEvent.Name = eventName;
@@ -79,8 +77,6 @@ namespace UnitTest
             gSCommandBindEvent.Name = eventName;
             gSCommandBindEvent.Handlers.Add(gSHandler);
 
-            string tmp = gSCommandBindEvent.GetCommand();
-
             Assert.IsTrue(gSClient.GSConnector.SendCommand(gSCommandBindEvent));
 
             gSCommandEvent.Name = eventName;
@@ -105,18 +101,14 @@ namespace UnitTest
 
             gSClient.UnregisterEvent(eventName);
 
-
             GSRangeColor range1 = new GSRangeColor() { Low = 0, High = 49, Color = red };
             GSRangeColor range2 = new GSRangeColor() { Low = 50, High = 100, Color = blueGreen };
 
             gSHandler.Colors.Add(range1);
             gSHandler.Colors.Add(range2);
 
-
             gSCommandBindEvent.Name = eventName;
             gSCommandBindEvent.Handlers.Add(gSHandler);
-
-            string tmp = gSCommandBindEvent.GetCommand();
 
             Assert.IsTrue(gSClient.GSConnector.SendCommand(gSCommandBindEvent));
 
@@ -155,8 +147,6 @@ namespace UnitTest
 
             gSCommandBindEvent.Name = eventName;
             gSCommandBindEvent.Handlers.Add(gSHandler);
-
-            string tmp = gSCommandBindEvent.GetCommand();
 
             Assert.IsTrue(gSClient.GSConnector.SendCommand(gSCommandBindEvent));
 

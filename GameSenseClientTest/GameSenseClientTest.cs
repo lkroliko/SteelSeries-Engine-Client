@@ -9,18 +9,10 @@ namespace UnitTest
     [TestClass]
     public class GameSenseClientTest
     {
-        string programName = "TESTPROGRAM";
-        string programDisplayName = "Test porgram";
-        string developerName = "lkroliko";
-        string eventName = "TESTEVENT";
-
-        [TestMethod]
-        public void ReadConfig()
-        {
-            GSConfig gameSenseConfigTest = new GSConfig(false);
-            Assert.IsTrue(gameSenseConfigTest.Address == "127.0.0.1" && gameSenseConfigTest.EncryptedAddress == "127.0.0.1");
-            Assert.IsTrue(gameSenseConfigTest.Port > 0 && gameSenseConfigTest.EncryptedPort > 0);
-        }
+        readonly string programName = "TESTPROGRAM";
+        readonly string programDisplayName = "Test porgram";
+        readonly string developerName = "lkroliko";
+        readonly string eventName = "TESTEVENT";
 
         [TestMethod]
         public void DisplayEvent()
