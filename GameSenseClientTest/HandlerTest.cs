@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading;
 
-namespace UnitTest
+namespace GameSenseClientTest
 {
     [TestClass]
     public class HandlerTest

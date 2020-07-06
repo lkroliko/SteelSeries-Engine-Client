@@ -4,10 +4,10 @@ using GameSenseClient;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace UnitTest
+namespace GameSenseClientTest
 {
     [TestClass]
-    public class GameSenseClientTest
+    public class GSClientTest
     {
         readonly string programName = "TESTPROGRAM";
         readonly string programDisplayName = "Test porgram";
@@ -34,7 +34,7 @@ namespace UnitTest
             int value = 0;
             for(int i = 0; i < 500; i++)
             {
-                gSCommandEvent.Data.Value = i;
+                gSCommandEvent.Data.Value = value;
                 Assert.IsTrue(gSClient.GSConnector.SendCommand(gSCommandEvent));
                 Thread.Sleep(100);
 
