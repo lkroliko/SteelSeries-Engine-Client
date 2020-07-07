@@ -1,4 +1,4 @@
-# Game Sense Client
+# SteelSeries Engine Client
 
 SteelSeries GameSense client in C#
 
