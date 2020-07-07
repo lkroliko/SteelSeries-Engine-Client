@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameSenseClient.JsonConverters
 {
-    internal class GSGradientColorJsonConverter : JsonConverter<GSGradientColor>
+    class GSGradientColorJsonConverter : JsonConverter<GSGradientColor>
     {
         public override GSGradientColor ReadJson(JsonReader reader, Type objectType, GSGradientColor existingValue, bool hasExistingValue, JsonSerializer serializer)
         {

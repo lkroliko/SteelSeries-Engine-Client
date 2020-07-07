@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GameSenseClientTest
@@ -17,26 +18,29 @@ namespace GameSenseClientTest
 
         public GSCommandTest()
         {
-            gSClient = new GSClient(false,programName);
+            gSClient = new GSClient(programName);
         }
 
-        [TestMethod]
+            [TestMethod]
         public void RegisterProgram()
         {
             string displayName = "Test_program";
             string developerName = "Test_developer";
             string pattern;
 
-            GSCommandRegisterProgram command = gSClient.GSCommandCreator.CreateGSCommandRegisterProgram();
+            IGSCommand command = new GSCommandBuilder().Program.Register(null,null);
+            command.ProgramName = programName;
 
             pattern = $"{{\"game\":\"{programName}\"}}";
             Assert.IsTrue(TestCommand(command, pattern));
 
-            command.DisplayName = displayName;
+            command = new GSCommandBuilder().Program.Register(null, displayName);
+            command.ProgramName = programName;
             pattern = $"{{\"game\":\"{programName}\",\"game_display_name\":\"{displayName}\"}}";
             Assert.IsTrue(TestCommand(command, pattern));
 
-            command.DeveloperName = developerName;
+            command = new GSCommandBuilder().Program.Register(developerName, displayName);
+            command.ProgramName = programName;
             pattern = $"{{\"game\":\"{programName}\",\"game_display_name\":\"{displayName}\",\"developer\":\"{developerName}\"}}";
             Assert.IsTrue(TestCommand(command, pattern));
         }
@@ -44,11 +48,13 @@ namespace GameSenseClientTest
         [TestMethod]
         public void UnegisterProgram()
         {
-            GSCommandUnregisterProgram command = gSClient.GSCommandCreator.CreateGSCommandUnregisterProgram();
+            IGSCommand command = new GSCommandBuilder().Program.Unregister();
+            command.ProgramName = programName;
+
             Assert.IsTrue(TestCommand(command, $"{{\"game\":\"{programName}\"}}"));
         }
 
-        private bool TestCommand(GSCommand gSCommand, string pattern)
+        private bool TestCommand(IGSCommand gSCommand, string pattern)
         {
             string command = gSCommand.GetCommand();
             command = RemoveWhitespaces(command);

@@ -5,15 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameSenseClient
+namespace GameSenseClient.Commands
 {
-    public class GSCommandUnregisterEvent : GSCommand
+    class GSCommandUnregisterEvent : GSCommand
     {
-        [JsonProperty(PropertyName = "game")]
-        internal string ProgramName { get; set; }
         [JsonProperty(PropertyName = "event")]
         public string Name { get; set; }
-
-        internal GSCommandUnregisterEvent(string programName) => ProgramName = programName;
+        [JsonIgnore]
+        public override string Uri { get; protected set; } = "remove_game_event";
     }
 }

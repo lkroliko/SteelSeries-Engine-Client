@@ -50,7 +50,14 @@ namespace GameSenseClient
         RgbZonedDevice_ThirtyEight = 38,
         RgbZonedDevice_ThirtyNine = 39,
         RgbZonedDevice_Forty = 40,
-            //fortyOne fortyTwo fortyThree fortyFour fortyFive fortySix fortySeven fortyEight fortyNine fifty fiftyOne fiftyTwo fiftyThree fiftyFour fiftyFive fiftySix fiftySeven fiftyEight fiftyNine sixty sixtyOne sixtyTwo sixtyThree sixtyFour sixtyFive sixtySix sixtySeven sixtyEight sixtyNine seventy seventyOne seventyTwo seventyThree seventyFour seventyFive seventySix seventySeven seventyEight seventyNine eighty eightyOne eightyTwo eightyThree eightyFour eightyFive eightySix eightySeven eightyEight eightyNine ninety ninetyOne ninetyTwo ninetyThree ninetyFour ninetyFive ninetySix ninetySeven ninetyEight ninetyNine one-hundred one-hundredOne one-hundredTwo one-hundredThree
+        RgbZonedDevice_fortyOne =41,
+        RgbZonedDevice_fortyTwo = 42,
+        RgbZonedDevice_fortyThree =43,
+        RgbZonedDevice_fortyFour =44,
+        RgbZonedDevice_fortyFive =45,
+        RgbZonedDevice_fortySix  = 46,
+        RgbZonedDevice_fortySeven = 47,
+        //fortyEight fortyNine fifty fiftyOne fiftyTwo fiftyThree fiftyFour fiftyFive fiftySix fiftySeven fiftyEight fiftyNine sixty sixtyOne sixtyTwo sixtyThree sixtyFour sixtyFive sixtySix sixtySeven sixtyEight sixtyNine seventy seventyOne seventyTwo seventyThree seventyFour seventyFive seventySix seventySeven seventyEight seventyNine eighty eightyOne eightyTwo eightyThree eightyFour eightyFive eightySix eightySeven eightyEight eightyNine ninety ninetyOne ninetyTwo ninetyThree ninetyFour ninetyFive ninetySix ninetySeven ninetyEight ninetyNine one-hundred one-hundredOne one-hundredTwo one-hundredThree
 
         Keyboard_FunctionKeys,
         Keyboard_MainKeyboard,

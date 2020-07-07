@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 
 namespace GameSenseClient
 {
-    public class GSEventData
+    internal class GSEventData
     {
         [JsonProperty(PropertyName = "value")]
         [DefaultValue(0)]
-        public int Value { get; set; } = 0;
-
-        internal GSEventData() { }
+        internal int Value { get; set; } = 0;
     }
 }

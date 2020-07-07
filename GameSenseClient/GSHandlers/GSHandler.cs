@@ -14,16 +14,19 @@ namespace GameSenseClient
     {
         [JsonProperty(PropertyName = "device-type")]
         internal string device;
+
         [JsonProperty]
         internal string zone;
+
         [JsonProperty]
         internal string mode;
         
         [JsonIgnore]
         public GSEventMode Mode { set { SetMode(value); } }
+
         [JsonIgnore]
         public GSDeviceZone Zone { set { SetZone(value); SetDevice(value); } }
-        //[JsonProperty(PropertyName = "color", NullValueHandling = NullValueHandling.Ignore)]
+
         [JsonProperty(PropertyName = "color")]
         public List<GSColor> Colors { set; get; } = new List<GSColor>();
 

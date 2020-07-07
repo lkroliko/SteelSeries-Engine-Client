@@ -7,12 +7,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace GameSenseClient
+namespace GameSenseClient.Commands
 {
-    public class GSCommandBindEvent : GSCommand
+    class GSCommandBindEvent : GSCommand
     {
-        [JsonProperty(PropertyName = "game")]
-        private string ProgramName { get; set; }
         [JsonProperty(PropertyName = "event")]
         public string Name { get; set; }
         [JsonProperty(PropertyName = "min_value")]
@@ -24,12 +22,9 @@ namespace GameSenseClient
         /// "0" means no icon
         /// </summary>
         public int IconId { get; set; } = 0;
+        [JsonIgnore]
+        public override string Uri { get; protected set; } = "bind_game_event";
 
         public List<GSHandler> Handlers = new List<GSHandler>();
-
-        internal GSCommandBindEvent(string programName)
-        {
-            ProgramName = programName;
-        }
     }
 }

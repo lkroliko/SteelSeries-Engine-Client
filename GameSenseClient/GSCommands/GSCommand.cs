@@ -5,26 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameSenseClient
+namespace GameSenseClient.Commands
 {
-    public abstract class GSCommand
+    abstract class GSCommand : IGSCommand
     {
-        public static explicit operator GSCommandType(GSCommand gSCommand)
-        {
-            if (gSCommand is GSCommandEvent)
-                return GSCommandType.Event;
-            if (gSCommand is GSCommandRegisterEvent)
-                return GSCommandType.RegisterEvent;
-            if (gSCommand is GSCommandRegisterProgram)
-                return GSCommandType.RegisterProgram;
-            if (gSCommand is GSCommandUnregisterEvent)
-                return GSCommandType.UnregisterEvent;
-            if (gSCommand is GSCommandUnregisterProgram)
-                return GSCommandType.UnregisterProgram;
-            if (gSCommand is GSCommandBindEvent)
-                return GSCommandType.BindEvent;
-            throw new NotImplementedException();
-        }
+        [JsonProperty(PropertyName = "game")]
+        string _programName;
+        [JsonIgnore]
+        public string ProgramName { get => _programName; set => _programName = value.ToUpper(); }
+        public abstract string Uri { get; protected set; }
 
         public string GetCommand()
         {

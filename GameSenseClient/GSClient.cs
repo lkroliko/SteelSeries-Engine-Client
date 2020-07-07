@@ -3,37 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace GameSenseClient
 {
     public class GSClient
     {
-        public GSConnector GSConnector { get; }
-        public GSCommandCreator GSCommandCreator { get; }
-
-        public GSClient(bool useEncryption, string programName)
+        string _programName;
+        GSConnector _connector;
+        
+        public GSClient(string programName, bool useEncryption = false)
         {
-            GSConnector = new GSConnector(useEncryption);
-            GSCommandCreator = new GSCommandCreator(programName);
+            _programName = programName;
+            _connector = new GSConnector(useEncryption);
         }
 
-        public bool RegisterProgram(string displayName, string developerName)
+        public bool SendCommand(Func<GSCommandBuilder,IGSCommand> builder)
         {
-            GSCommandRegisterProgram gSCommandRegisterProgram = GSCommandCreator.CreateGSCommandRegisterProgram();
-            gSCommandRegisterProgram.DisplayName = displayName;
-            gSCommandRegisterProgram.DeveloperName = developerName;
-            return GSConnector.SendCommand(gSCommandRegisterProgram);
+            IGSCommand command = builder.Invoke(new GSCommandBuilder());
+            command.ProgramName = _programName;
+            return _connector.SendCommand(command);
         }
-        public bool UnregisterProgram()
+
+        public bool SendCommand(Func<IGSCommand> builder)
         {
-            GSCommandUnregisterProgram gSCommandUnregisterProgram = GSCommandCreator.CreateGSCommandUnregisterProgram();
-            return GSConnector.SendCommand(gSCommandUnregisterProgram);
+            IGSCommand command = builder.Invoke();
+            command.ProgramName = _programName;
+            return _connector.SendCommand(command);
         }
-        public bool UnregisterEvent(string name)
+
+        public bool SendCommand(IGSCommand command)
         {
-            GSCommandUnregisterEvent gSCommandUnregisterEvent = GSCommandCreator.CreateGSCommandUnregisterEvent();
-            gSCommandUnregisterEvent.Name = name;
-            return GSConnector.SendCommand(gSCommandUnregisterEvent);
+            command.ProgramName = _programName;
+            return _connector.SendCommand(command);
         }
     }
 }

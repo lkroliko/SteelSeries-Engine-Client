@@ -5,22 +5,22 @@ using System.Text;
 
 namespace GameSenseClient
 {
-    public class GSConnector
+    class GSConnector
     {
-        private readonly GSConfig gSConfig;
-        private readonly HttpClient httpClient = new HttpClient();
-        public string LastResult { get; private set; }
+        private readonly GSConfig _config;
+        private readonly HttpClient _httpClient = new HttpClient();
+        internal string LastResult { get; private set; }
         internal GSConnector(bool useEncryption)
         {
-            gSConfig = new GSConfig(useEncryption);
+            _config = new GSConfig(useEncryption);
         }
 
         /// <returns>IsSended</returns>
-        public bool SendCommand(GSCommand gSCommand)
+        internal bool SendCommand(IGSCommand command)
         {
-            Uri commandUri = GetCommandUri(gSCommand);
-            StringContent stringContent = GetCommandContent(gSCommand);
-            HttpResponseMessage result = httpClient.PostAsync(commandUri, stringContent).Result;
+            Uri commandUri = GetCommandUri(command);
+            StringContent stringContent = GetCommandContent(command);
+            HttpResponseMessage result = _httpClient.PostAsync(commandUri, stringContent).Result;
 
             if (result.StatusCode == HttpStatusCode.OK)
                 return true;
@@ -29,29 +29,15 @@ namespace GameSenseClient
 
             return false;
         }
-        private StringContent GetCommandContent(GSCommand gSCommand)
+
+        private StringContent GetCommandContent(IGSCommand command)
         {
-            return new StringContent(gSCommand.GetCommand(), Encoding.UTF8, "application/json");
+            return new StringContent(command.GetCommand(), Encoding.UTF8, "application/json");
         }
-        private Uri GetCommandUri(GSCommand gSCommand)
+
+        private Uri GetCommandUri(IGSCommand command)
         {
-            switch ((GSCommandType)gSCommand)
-            {
-                case GSCommandType.Event:
-                    return gSConfig.EventUri;
-                case GSCommandType.RegisterEvent:
-                    return gSConfig.RegisterEventUri;
-                case GSCommandType.RegisterProgram:
-                    return gSConfig.RegisterProgramUri;
-                case GSCommandType.UnregisterEvent:
-                    return gSConfig.UnregisterEventUri;
-                case GSCommandType.UnregisterProgram:
-                    return gSConfig.UnregisterProgramUri;
-                case GSCommandType.BindEvent:
-                    return gSConfig.BindEventUri;
-                default:
-                    throw new NotImplementedException();
-            }
+            return new Uri($"http://{_config.Address}/{command.Uri}");
         }
     }
 }

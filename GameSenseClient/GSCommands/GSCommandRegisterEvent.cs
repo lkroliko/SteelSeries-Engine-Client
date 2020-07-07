@@ -6,12 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameSenseClient
+namespace GameSenseClient.Commands
 {
-    public class GSCommandRegisterEvent : GSCommand
+    class GSCommandRegisterEvent : GSCommand
     {
-        [JsonProperty(PropertyName = "game")]
-        private string ProgramName { get; set; }
         private string eventName;
         [JsonProperty(PropertyName = "event")]
         public string Name { get { return eventName; } set { eventName = value.ToUpper(); } }
@@ -26,7 +24,7 @@ namespace GameSenseClient
         public int IconId { get; set; } = 0;
         [JsonProperty(PropertyName = "value_optional")]
         public bool ValueOptional { get; set; } = true;
-
-        internal GSCommandRegisterEvent(string programName) => ProgramName = programName;
+        [JsonIgnore]
+        public override string Uri { get; protected set; } = "register_game_event";
     }
 }

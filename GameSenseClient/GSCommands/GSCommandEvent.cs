@@ -1,20 +1,19 @@
 ﻿using Newtonsoft.Json;
 
-namespace GameSenseClient
+namespace GameSenseClient.Commands
 {
-    public class GSCommandEvent : GSCommand
+    class GSCommandEvent : GSCommand
     {
-        [JsonProperty(PropertyName = "game")]
-        internal string ProgramName { get; set; }
         [JsonProperty(PropertyName = "event")]
-        public string Name { get; set; }
+        internal string Name { get; set; }
         [JsonProperty(PropertyName = "data")]
-        public GSEventData Data { get;  }
+        public GSEventData Data { get; }
+        [JsonIgnore]
+        public override string Uri { get; protected set; } = "game_event";
 
-        internal GSCommandEvent(string programName)
+        internal GSCommandEvent(int value)
         {
-            ProgramName = programName;
-            Data = new GSEventData();
+            Data = new GSEventData() { Value = value };
         }
     }
 }
