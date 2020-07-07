@@ -9,28 +9,28 @@ namespace GameSenseClientTest
     [TestClass]
     public class GSClientTest
     {
-        readonly string programName = "TESTPROGRAM";
-        readonly string displayName = "Test porgram";
-        readonly string developerName = "lkroliko";
-        readonly string eventName = "TESTEVENT";
-        GSClient gSClient;
+        readonly string _programName = "TESTPROGRAM";
+        readonly string _displayName = "Test porgram";
+        readonly string _developerName = "lkroliko";
+        readonly string _eventName = "TESTEVENT";
+        GSClient _client;
 
         public GSClientTest()
         {
-            gSClient = new GSClient(programName);
+            _client = new GSClient(_programName);
         }
 
         [TestMethod]
         public void DisplayEvent()
         {
-            Assert.IsTrue(gSClient.SendCommand(builder => builder.Program.Register(developerName, displayName)));
+            Assert.IsTrue(_client.SendCommand(builder => builder.Program.Register(_developerName, _displayName)));
 
-            Assert.IsTrue(gSClient.SendCommand(builder => builder.Event.Register(eventName)));
+            Assert.IsTrue(_client.SendCommand(builder => builder.Event.Register(_eventName)));
 
             int value = 0;
             for (int i = 0; i < 200; i++)
             {
-                Assert.IsTrue(gSClient.SendCommand(builder => builder.Event.Fire(eventName, value)));
+                Assert.IsTrue(_client.SendCommand(builder => builder.Event.Fire(_eventName, value)));
                 Thread.Sleep(10);
 
                 value++;
@@ -42,31 +42,31 @@ namespace GameSenseClientTest
         [TestMethod]
         public void RegisterProgram()
         {
-            Assert.IsTrue(gSClient.SendCommand(builder => builder.Program.Register(developerName, displayName)));
+            Assert.IsTrue(_client.SendCommand(builder => builder.Program.Register(_developerName, _displayName)));
         }
 
         [TestMethod]
         public void UnregisterProgram()
         {
-            Assert.IsTrue(gSClient.SendCommand(builder => builder.Program.Unregister()));
+            Assert.IsTrue(_client.SendCommand(builder => builder.Program.Unregister()));
         }
 
         [TestMethod]
         public void RegisterEvent()
         {
-            Assert.IsTrue(gSClient.SendCommand(builder=> builder.Event.Register(eventName)));
+            Assert.IsTrue(_client.SendCommand(builder=> builder.Event.Register(_eventName)));
         }
 
         [TestMethod]
         public void UnegisterEvent()
         {
-            Assert.IsTrue(gSClient.SendCommand(builder => builder.Event.Unregister(eventName)));
+            Assert.IsTrue(_client.SendCommand(builder => builder.Event.Unregister(_eventName)));
         }
 
         [TestMethod]
         public void Event()
         {
-            Assert.IsTrue(gSClient.SendCommand(builder => builder.Event.Fire(eventName, 0)));
+            Assert.IsTrue(_client.SendCommand(builder => builder.Event.Fire(_eventName, 0)));
         }
 
     }
