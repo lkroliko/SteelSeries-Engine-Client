@@ -1,6 +1,6 @@
 # SteelSeries Engine Client
 
-SteelSeries GameSense client in C#
+GameSense client in C# for SteelSeries Engine 3
 
 #### Create client
 ```c#
